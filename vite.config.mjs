@@ -31,7 +31,7 @@ export default defineConfig({
       output: {
         chunkFileNames: "js/[name].js",
         entryFileNames: "js/[name].js",
-        assetFileNames: assetInfo => {
+        assetFileNames: (assetInfo) => {
           if (assetInfo.name.endsWith(".css")) {
             return "css/main.css"; // Outputs to css/style.css
           }
@@ -78,7 +78,7 @@ export default defineConfig({
           .replaceAll(`crossorigin`, "")
           .replaceAll('type="module"', "defer")
           .replace("../js/", "js/")
-          .replace(`<link rel="stylesheet"  href="../css/main.css">`, "");
+          .replace("../css/", "css/");
         return transformedHTML;
       },
     },
