@@ -3,21 +3,58 @@ include defaults/mixins.pug
 block content
     .container
         .card__preview
-            .card__preview--number XXXX XXXX XXXX XXXX
-            .card__preview--holder Jan Kowalski
+            .card__preview__container
+                +addPicture('background.jpg','card__preview__image')
+
+                .card__preview__front
+                    #moving-box
+                
+                    .card__preview__row
+                        +addPicture('chip.png', 'card__preview__thumbnail')   
+                        +addPicture('visa.png', 'card__preview__thumbnail card__preview-thumbnail--card')
+
+                    #card-number-preview
+                    
+                    .card__preview__row.card__preview__row--full
+                        .card__preview__column
+                            span.card__preview__label Card Holder
+                            #card-holder-preview
+                        
+                        .card__preview__column
+                            span.card__preview__label Expires
+                            #card-date-preview 
+                                #card-month-preview
+                                span /
+                                #card-year-preview
+
+                .card__preview__back
+                    .card__preview__back__stripe
+                    span.card__preview__label CVV
+                    .card__preview__back__container
+                        #card-cvv-preview
+                    +addPicture('visa.png', 'card__preview__thumbnail card__preview-thumbnail--card')
+                
+
         form.card__form
-            input.card__form--input(type="text" placeholder="Card number")
-            label(for="card__form--select")
-            select#card__form--select
-                option 01
-                option 02
-                option 03
-                option 04
-                option 05
-                option 06
-                option 07
-                option 08
-                option 09
-                option 10
-                option 11
-                option 12
+            .card__form-control
+                label.card__form-control__label(for="card-number") Card number
+                input.card__form-control__input#card-number(name='number')
+
+            .card__form-control
+                label.card__form-control__label(for="card-holder") Card name
+                input.card__form-control__input#card-holder(name='holder')
+
+            .card__form__group
+                .card__form-control
+                    label.card__form-control__label(for="card-year") Expiration date
+                    .card__form__select-group
+                        select#card-month.card__form-control__select(name='month')
+                            option(selected disabled value='') Month
+                        select#card-year.card__form-control__select(name='year')
+                            option(selected disabled value='') Year
+                .card__form-control
+                    label.card__form-control__label(for="card-cvv") CVV
+                    input.card__form-control__input#card-cvv(name='cvv')
+
+            button.card__form__button(type='submit') Submit
+            

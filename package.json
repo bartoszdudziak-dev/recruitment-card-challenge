@@ -21,6 +21,7 @@
     "vituum": "^1.1.1"
   },
   "dependencies": {
+    "credit-card-type": "^10.0.2",
     "cross-env": "^7.0.3",
     "fs-extra": "^11.1.0",
     "jsdom": "^21.0.0"
